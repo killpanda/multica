@@ -54,6 +54,9 @@ func resolveSkillsDir(workDir, provider string) (string, error) {
 	case "opencode":
 		// OpenCode natively discovers skills from .config/opencode/skills/ in the workdir.
 		skillsDir = filepath.Join(workDir, ".config", "opencode", "skills")
+	case "copilot":
+		// Copilot CLI discovers custom agents from .github/agents/ in the workdir.
+		skillsDir = filepath.Join(workDir, ".github", "agents")
 	default:
 		// Fallback: write to .agent_context/skills/ (referenced by meta config).
 		skillsDir = filepath.Join(workDir, ".agent_context", "skills")
