@@ -195,7 +195,7 @@ func (b *copilotBackend) processEvents(r io.Reader, ch chan<- Message) copilotSc
 		case "error":
 			text := event.textContent()
 			if text == "" {
-				text = finalError
+				text = event.Error
 			}
 			if text != "" {
 				trySend(ch, Message{Type: MessageError, Content: text})
